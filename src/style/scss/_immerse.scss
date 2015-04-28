@@ -1,0 +1,824 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* Animation Styles
+   ========================================================================== */
+
+@-webkit-keyframes fade {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Clearfix
+   ========================================================================== */
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Global Layout Styles
+   ========================================================================== */
+
+p{
+  margin: 0;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+.iFrame {
+  font-size: 85%;
+}
+
+.iapp-wrap {
+    height: 100%;
+    left: 0;
+    postion: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#overlay {
+    height: calc(100% - 40px)
+}
+
+article.asset, article {
+    background: white;
+    height: 100%;
+    width: 100%;
+}
+
+.transition-wrap {
+    height: 100%;
+}
+
+section.contents {
+    height: 100%;
+}
+
+.non-article-content {
+    height: 100%;
+}
+
+.round-container, .round-wrap {
+    height: 100%;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+  background: #000;
+  color: #FFFFFF;
+  display: block;
+  font-family: "Futura Today", Arial,sans-serif;
+  font-size: 100%;
+  height: 100%;
+  line-height: 1.4;
+  margin: 0px;
+  min-height: 539px;
+  min-width: 890px;
+  overflow: hidden;
+  padding: 0px;
+  position: relative;
+  width: 100%;
+}
+
+#header {
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  z-index: 4;
+}
+
+.panel-window {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.page-container {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.panel {
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  transition: transform 500ms ease;
+  width: 100%;
+
+  &.upcoming {
+    transform: translate(100%, 0);
+  }
+
+  &.done {
+    transform: translate(-100%, 0);
+  }
+}
+
+.bgvideo {
+    margin: auto 0;
+    min-height: 100%;
+    min-width: 100%;
+    height: auto !important;
+    overflow: hidden;
+  position: relative;
+    vertical-align: middle;
+}
+
+/* Caption Box Styles
+   ========================================================================== */
+
+.caption-box {
+  animation: fade 1s ease-in;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-top: solid 1px #FFFFFF;
+  bottom: 0px;
+  color: #FFFFFF;
+  // max-width: 480px;
+  left: 2em;
+  min-height: 200px;
+  // min-width: 890px;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  padding-bottom: 25px;
+  padding-top: 25px;
+  position: absolute;
+  text-align: left;
+  // transform: translate(58%, 0);
+  width: 500px;
+  z-index: 2;
+  transition: all, ease, .5s;
+  @extend .group;
+}
+
+.box-controls {
+  // float: left;
+  position: relative;
+  // width: 40%; 
+}
+
+.caption-box.closed {
+  transform: translate(0, 0);
+}
+
+.caption-box p {
+  font-family: Arial,sans-serif;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.caption-head {
+  font-family: "Futura Today" Arial,sans-serif;
+  font-size: 125%;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.panel-toggle {
+  bottom: -25px;
+  background-size: 100%;
+  // background-color: white;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  // border-bottom: solid 3px $extra-light-grey;
+  // box-shadow: $shadow-standard;
+  color: $dark-grey;
+  font-family: "Futura Today Bold" Arial,sans-serif;
+  float: right;
+  // height: 20px;
+  // padding: 1em;
+  // position: absolute;
+  right: 5px;
+  text-transform: uppercase;
+  
+  width: 150px;
+}
+
+.panel-toggle:hover {
+  cursor: pointer;
+}
+
+.social {
+  // bottom: 5px;
+  position: absolute;
+  right: 1em;
+  top: 0;
+  z-index: 6;
+}
+
+.social-button {
+  background-color: $blue;
+  border-radius: 25px;
+  box-shadow: $shadow-standard;
+  cursor: pointer;
+  height: 50px;
+  padding: 9px;
+  width: 50px;
+  img {
+    width: 100%;
+  }
+}
+
+.social-icon {
+  // display: inline-block;
+  margin-right: 5px;
+  width: 40px;
+}
+
+.social-upper-wrap {
+  a {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  height: 200px;
+  // max-height: 0;
+  overflow: hidden;
+  padding-top: 25px;
+  position: absolute;
+  top: 0;
+  transition: all 250ms ease;
+  transform: translate(0, -175px);
+  width: 50px;
+  z-index: -1;
+  &.show {
+    
+    // max-height: 250px;
+    .social-inner-wrap {
+      transform: translate(0, 0);
+    }
+  }
+}
+
+.social-inner-wrap {
+  background-color: $light-blue;
+  border-radius: 25px 25px 0 0;
+  box-shadow: $shadow-standard;
+  height: 200px;
+  padding-left: 5px;
+  padding-top: 5px;
+  position: relative;
+  transform: translate(0, 175px);
+  transition: transform 250ms ease;
+}
+
+.social-icon:hover {
+  cursor: pointer;
+}
+
+/* Video Controls
+   ========================================================================== */
+
+.play-pause-button {
+  cursor: pointer;
+  display: none;
+  float: left;
+  margin-right: auto;
+  margin-top: 15px;
+  text-transform: uppercase;
+  width: 60px;
+  z-index: 2;
+}
+
+.volume-bar {
+  background: #666;
+  border-radius: 3%/70%;
+  margin: 7px 0;
+  position: relative;
+  width: 100%;
+  height: 2px;
+}
+
+.dot-container {
+  left: -4.4%;
+  position: relative;
+  top: -15px;
+  width: 108%;
+}
+
+.volume-box {
+  display: table-cell;
+  padding-right: 10%;
+  padding-top: 1%;
+  width: 75%;
+}
+
+.volume-dot {
+  background: #000;
+  border-radius: 50%;
+  cursor: pointer;
+  left: 90%;
+  padding-bottom: 4.5%;
+  padding-top: 4.5%;
+  position: absolute;
+  top: 0px;
+  width: 9.5%;
+}
+
+.volume-text {
+  display: table-cell;
+  text-transform: uppercase;
+  vertical-align: top;
+  width: 25%;
+}
+
+.volume-container {
+  border-radius: 20px;
+  top: 0px;
+  display: none;
+  float: left;
+  left: 8%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  text-indent: 3%;
+  width: 50%;
+  z-index: 2;
+}
+html.vert-display video {
+    margin: 0 auto;
+    width: auto !important;
+    height: 100% !important;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.controls {
+  color: #ffffff;
+  height: 50px;
+  font-size: 80%;
+  max-width: 480px;
+  min-width: 375px;
+  padding-right: 2.5%;
+  position: relative;
+  transition: all, ease, .5s;
+  width: 13%;
+  z-index: 2;
+}
+
+html.touch .controls {
+  display: none;
+}
+
+html.touch .caption-box  {
+  padding-bottom: 5%;
+}
+
+.commentary {
+  float: left;
+  margin-left: 2%;
+  margin-top: 15px;
+  text-transform: uppercase;
+}
+
+.caption-body{
+  text-align: left;
+}
+
+.hide-controls .controls{
+  opacity: 0;
+}
+
+.hide-controls .caption-box{
+  opacity: 0;
+}
+
+audio {
+  background: none;
+  position: absolute;
+  top: 100px;
+  z-index: 3;
+}
+
+
+.navigation-controls-arrow {
+    color: white;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 80px;
+    z-index: 20;
+
+    img {
+        max-width: 100%;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.hide {
+        display: none;
+    }
+}
+
+.navigation-controls-forward-arrow{
+    right: 0.5em;
+}
+
+.navigation-controls-back-arrow {
+    left: 0.5em;
+}
+
+/* Audio Controller Styles
+   ========================================================================== */
+
+.audio-bar {
+  background: #fff;
+  border-radius: 3%/70%;
+  margin: 6px 0 7px 0;
+  position: relative;
+  width: 100%;
+  height: 2px;
+}
+
+.audio-dot-container {
+  left: -4.4%;
+  position: relative;
+  top: -14px;
+  width: 108%;
+}
+
+.audio-box {
+  display: table;
+  float: left;
+  min-width: 120px;
+  padding-left: 5%;
+  padding-right: 3%;
+  padding-top: 1%;
+  width: 40%;
+}
+
+.audio-dot {
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  left: 0%;
+  padding-bottom: 4.5%;
+  padding-top: 4.5%;
+  position: absolute;
+  top: 0px;
+  width: 9.5%;
+}
+
+.audio-player{
+  display: inline-block;
+  float: left;
+  overflow: hidden;
+  width: 50%;
+}
+
+
+.audio-text {
+  display: table-cell;
+  text-transform: uppercase;
+  vertical-align: top;
+  width: 25%;
+}
+
+.audio-container {
+  top: 0px;
+  display: table;
+  float: right;
+  left: 8%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  top: -100px;
+  width: 100%;
+  z-index: 5;
+}
+
+.audio-inner{
+-webkit-transition:all .3s ease;
+   -moz-transition:all .3s ease;
+     -o-transition:all .3s ease;
+        transition:all .3s ease;
+}
+
+.audio-inner.not-playing{
+margin-left:-600px;
+-webkit-transition:all .3s ease;
+   -moz-transition:all .3s ease;
+     -o-transition:all .3s ease;
+        transition:all .3s ease;
+}
+
+
+.audio-play-pause-button {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  position: relative;
+  text-transform: uppercase;
+  top: 10px;
+  width: 50%;
+  z-index: 2;
+}
+
+.audio-time-text {
+  display: inline-block;
+  float: left;
+  font-size: 90%;
+  position: relative;
+  text-transform: uppercase;
+  top: 3px;
+  z-index: 2;
+}
+
+.audio-toggle {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  display: inline-block;
+  font-family: "Futura Today Light", Arial,sans-serif;
+  height: 20px;
+  overflow: hidden;
+  padding: 3px 4px;
+  position: relative;
+  text-transform: uppercase;
+  width: 58px;
+  vertical-align: middle;
+}
+
+.audio-toggle.playing {
+  background-color: #009bff;
+}
+
+.audio-toggle:hover {
+  cursor: pointer;
+}
+
+.toggle-inner{
+  left: -35px;
+  position: absolute;
+  transition: all .3s ease;
+  vertical-align: middle;
+  width: 200px;
+}
+
+.audio-toggle.playing .toggle-inner {
+  left: 0px;
+  transition: all .3s ease;
+}
+
+.toggle-button {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  display: inline-block;
+  height: 15px;
+  position: static;
+  transition: all .3s ease;
+  width: 15px;
+}
+
+.audio-toggle.playing .toggle-button {
+  background: rgba(255, 255, 255, 1);
+  transition: all .3s ease;
+}
+
+.toggle-label {
+  margin: 0px 8px;
+  position: relative;
+  top: -1px;
+  vertical-align: top;
+}
+
+.commentary-label {
+  position: relative;
+  margin-right: 5px;
+  top: 2px;
+}
+
+.audio-credit-inner {
+  font-family: "Futura Today Light", Arial,sans-serif;
+  margin-bottom:5px;
+  margin-left: 3%;
+  position: relative;
+  text-indent: 0;
+  text-transform: uppercase;
+}
+
+
+/* Arrow Styles
+   ========================================================================== */
+.arrow {
+  /*background: url(arrows.png);*/
+  cursor: pointer;
+  display: block;
+  height: 47px;
+  position: absolute;
+  overflow: hidden;
+  top: 48%;
+  width: 27px;
+  z-index: 100;
+}
+
+.arrow.next {
+  /*background-position: 0 -47px;*/
+  right: 10px;
+}
+
+.arrow.next .arrow-inner {
+    position: relative;
+    top: -47px;
+  }
+
+.arrow.prev {
+  left: 10px;
+}
+
+.arrow.hide {
+  display: none;
+}
+
+/* Intro Page Styles
+   ========================================================================== */
+
+.intro-header {
+  border-bottom: solid 1px #FFFFFF;
+  border-top: solid 1px #FFFFFF;
+  font-size: 550%;
+  letter-spacing: .2em;
+  margin: 20% auto .5% auto;
+  min-width: 375px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 30%;
+}
+
+.intro {
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-animation: fade 1.5s ease-in;
+  animation: fade 1.5s ease-in;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0%;
+  transition: transform 500ms ease;
+  z-index: 4;
+
+}
+
+.intro.hide{
+  transform: translate(-100%, 0);
+}
+
+.intro-copy {
+  color: #FFFFFF;
+  font-family: "Futura Today Light", Arial,sans-serif;
+  font-size: 150%;
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 3% 0;
+  text-align: center;
+  width: 75%;
+  
+}
+
+.intro-content {
+  position: absolute;
+  top: 0;
+  transform: translate(0, 50%);
+  width: 100%;
+  z-index: 10;
+  img {
+    display: block;
+    margin: 0 auto 4em auto;
+    max-width: 500px;
+    width: 50%;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.iFrame .intro-content img {
+  max-width: 350px;
+}
+
+.intro-logo {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.begin-button {
+  background-color: #FFFFFF;
+  color: #000000;
+  font-size: 1.5em;
+  margin: 0 auto;
+  padding: .25em 0;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition:all, ease, .5s;
+    -moz-transition:all, ease, .5s;
+  -o-transition:all, ease, .5s;
+    transition:all, ease, .5s;
+  width: 6em;
+}
+
+.begin-button:hover {
+  // background-color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  -webkit-transition:all, ease, .5s;
+    -moz-transition:all, ease, .5s;
+  -o-transition:all, ease, .5s;
+    transition:all, ease, .5s;
+    path {
+      fill-opacity: 0.7;
+      transform: fill-opacity 500ms ease;
+    }
+}
+
+#introvid {
+  transition: transform 500ms ease;
+  z-index: 3;
+  &.hide{
+    transform: translate(-100%, 0);
+  }
+}
+
+/* Credits Styles
+   ========================================================================== */
+
+.credits {
+  background-color: rgba(0, 0, 0, 0.2);
+  font-family: "Futura Today Light", Arial,sans-serif;
+  left: 23%;
+  margin: 0 auto;
+  padding: 2%;
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  width: 50%;
+  z-index: 5;
+}
+
+@media (max-width: 1500px) {
+  .credits {
+    left: 10%;
+    width: 80%;
+  }
+}
+
+.credits h3 {
+  margin-top: 1em;
+  text-transform: uppercase;
+}
+
+.credits-body.left{
+  float: left;
+  text-align: right;
+}
+
+.credits-body.right {
+  float: right;
+  text-align: left;
+}
+
+ul.credits-body {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 49%;
+}
+
+.credits li {
+  margin-bottom: .25em;
+}
+
+.credits-header {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Media Queries
+   ========================================================================== */
+
+   @media (max-width: 1500px) {
+
+    .intro-header {
+      margin-top: 10%;
+    }
+
+   }
+
+

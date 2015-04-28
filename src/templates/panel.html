@@ -1,0 +1,63 @@
+    <div class="panel upcoming">
+      <div class="caption-box">
+        <div class="box-controls">
+          
+            <h2 class="caption-head"><%= vid.head %></h2>
+  <% if(vid.audio) { %>
+            <div class="controls" style="">
+            
+            <div class="audio-container" >
+              <div class="audio-play-pause-button"> <span class="commentary-label">Commentary</span>
+                <div class="audio-toggle">
+                  <div class="toggle-inner"> <span class="toggle-label">On</span>
+                    <div class="toggle-button"></div>
+                    <span class="toggle-label">Off</span> </div>
+                </div>
+              </div>
+              <div class="audio-player">
+                <div class="audio-inner not-playing">
+                  <div class="audio-credit-inner">Audio Credit</div>
+                  <div class="audio-box">
+                    <div class="audio-bar"> </div>
+                    <div class="audio-dot-container">
+                      <div class="audio-dot"></div>
+                    </div>
+                  </div>
+                  <div class="audio-time-text">0:00/0:00</div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <% } %>
+          <!-- End Controls --> 
+          <p class="caption-body"><%= vid.body %></p>
+          <div class="panel-toggle"></div>
+          <div class="social">
+              <div class="social-button"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/options.svg" alt="share"></div>
+              <div class="social-upper-wrap">
+                <div class="social-inner-wrap">
+                  <a href="javascript: window.open('https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.gannett-cdn.com%2Fexperiments%2Fusatoday%2F2014%2F12%2Fvs-backstage%2F&text=Angels!!!%20Check%20out%20this%20interactive%20backstage%20pass%20to%20the%202014%20Victoria\'s%20Secret%20Fashion%20Show&via=usatoday', 'twitterwindow', 'height=450, width=550, top=200, left=200, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');Analytics.click('Twitter share');void(0);"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/twitter.svg" alt="Share on Twitter" class="social-icon" border="0"></a> 
+                  <a href="javascript: var sTop=window.screen.height/2-(218);var sLeft=window.screen.width/2-(313);window.open('https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=http%3A%2F%2Fwww.gannett-cdn.com%2Fexperiments%2Fusatoday%2F2014%2F12%2Fvs-backstage&picture=http://www.gannett-cdn.com/experiments/usatoday/2014/12/vs-backstage/img/fb-post.jpg&name=Angels!!!&description=Check%20out%20this%20interactive%20backstage%20pass%20to%20the%202014%20Victoria\'s%20Secret%20Fashion%20Show&redirect_uri=http://usatoday30.usatoday.com/_common/_dialogs/fb-share-done.html','sharer','toolbar=0,status=0,width=580,height=400,top='+sTop+',left='+sLeft);Analytics.click('Facebook share');void(0);"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/facebook.svg" alt="Share on Facebook" class="social-icon" border="0"></a> 
+                  <a href="mailto:?body=Check%20out%20this%20interactive%20backstage%20pass%20to%20the%202014%20Victoria%27s%20Secret%20Fashion%20Show %0d%0d http%3A%2F%2Fwww.gannett-cdn.com%2Fexperiments%2Fusatoday%2F2014%2F12%2Fvs-backstage%2F&subject=Angels!!!" onclick="var sharer = window.open('http://usatoday30.usatoday.com/_common/_dialogs/fb-share-done.html','sharer','toolbar=0,status=0,width=580,height=400,top=200,left=200');setTimeout(function() {sharer.close();}, 500);void(0);" target="sharer"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/email.svg" alt="Share on Email" class="social-icon" border="0"></a> 
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="video-container">
+        <div class="videocover"></div>
+        <div class="videoembed" id="main-player-<%=num%>">
+      </div>
+        
+  </div>
+  <% if(vid.audio) { %>
+     <audio>
+         <source src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/media/<%= vid.audio_file %>.mp3" type="audio/mpeg">
+         <source src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/media/<%= vid.audio_file %>.ogg" type="audio/ogg">
+    </audio>
+
+    <% } %>
+
+
+    </div>
+    <!--End Panel-->
