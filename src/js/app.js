@@ -161,13 +161,13 @@ define([
 
     objImmerse.reformatPage = function() {
         objImmerse.numWindowWidth = window.innerWidth;
-        if (window.innerWidth / window.innerHeight < 1920 / 1080) {
-            var numWidth = 100 * ((1920 / 1080) / (window.innerWidth / window.innerHeight));
+        if (window.innerWidth / window.innerHeight < 1448 / 825) {
+            var numWidth = 100 * ((1448 / 825) / (window.innerWidth / window.innerHeight));
 
             objImmerse.arrVideos.css({"top": "0%", "left" : ((100 - numWidth) / 2).toString() + "%", "width": numWidth.toString() + "%", "height": "100%"});
 
         } else {
-            var numHeight = 100 * ((1080/ 1920) / (window.innerHeight/window.innerWidth));
+            var numHeight = 100 * ((1448/ 825) / (window.innerHeight/window.innerWidth));
             objImmerse.arrVideos.css({"left" : "0%"});
             objImmerse.arrVideos.css({"top" : ((100 - numHeight) / 2).toString() + "%", "height": numHeight.toString() + "%", "width": "100%"});
         }

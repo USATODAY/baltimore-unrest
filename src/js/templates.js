@@ -16,9 +16,9 @@ this["templates"]["intro.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += ' <div id="introvid" class="video-container">\n        <div class="videocover"></div>\n        <div class="videoembed" id="introplayer">\n        </div>\n</div>\n<div class="intro-content">\n    <div class="intro-title">\n        <h1 class="intro-headline">' +
+__p += ' <div id="introvid" class="video-container">\n        <div class="videocover"></div>\n        <div class="videoembed" id="introplayer">\n        </div>\n</div>\n<div class="intro-content">\n    <div class="intro-title">\n        <h2 class="intro-headline">' +
 ((__t = (project_head )) == null ? '' : __t) +
-'</h1>\n        <h2 class="intro-copy">' +
+'</h2>\n        <h2 class="intro-copy">' +
 ((__t = (chatter )) == null ? '' : __t) +
 '</h2>\n          <div class="begin-button">Begin</div>\n          <!-- <div class="intro-credits">\n            <h3 class="credit-line">By: <a href="https://twitter.com/khjelmgaard" target="_blank">@khjelmgaard</a>, <a href="https://twitter.com/mitchthorson" target="_blank">@mitchthorson</a>, <a href="https://twitter.com/toryhargro" target="_blank">@toryhargro</a>, <a href="https://twitter.com/renalston" target="_blank">@renalston</a> and Robin A. Smith</h3>\n          </div> -->\n        </div>\n      </div>\n      \n    \n';
 
