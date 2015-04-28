@@ -7,36 +7,7 @@ define([
     'jquery_ui'
 ], function(jQuery, _, templates, Analytics, config) {
 
-    var videoInfo = [
-        {
-            "head": "NationalGuard", 
-            "body": "National guard footage",
-            "yt_id": "r2P3JT4Z48w",
-            "audio": false,
-            "audio_file": ""
-        },
-        {
-            "head": "NationalGuard", 
-            "body": "National guard footage",
-            "yt_id": "r2P3JT4Z48w",
-            "audio": true,
-            "audio_file": "PastorDanteHickman"
-        },
-        {
-            "head": "Protesters Clash", 
-            "body": "National guard footage",
-            "yt_id": "cg5N4wVl2QM",
-            "audio": false,
-            "audio_file": ""
-        },
-        {
-            "head": "Community Center Burning", 
-            "body": "Community Center",
-            "yt_id": "VweR4RWrGFo",
-            "audio": true,
-            "audio_file": "PastorDanteHickman"
-        }
-    ];
+    var videoInfo, copy;
 
     var share_text = "Share me";
 
@@ -44,65 +15,78 @@ define([
     objImmerse.arrYTVideos = [];
 
     objImmerse.init = function() {
-        objImmerse.arrHTMLTag = jQuery("html");
-        objImmerse.arrPanelWindow = jQuery(".panel-window");
+        var hostname = window.location.hostname;
+        var dataURL;
+
+        if ((hostname == "localhost" || hostname == "10.0.2.2")) {
+            dataURL = 'data/data.json';
+        } else {
+            dataURL = "http://" + hostname + "/services/webproxy/?url=http://www.gannett-cdn.com/experiments/usatoday/2015/04/record-day/data/data.json";
+        }
+
+        jQuery.getJSON(dataURL, function(data) {
+            videoInfo = data.videos;
+            copy = data.copy;
         
-        window.onYouTubeIframeAPIReady = function() {
-          // add youtube videos here
-          objImmerse.addYTVideo(videoInfo[0].yt_id, "introplayer", true, true);
-          for (i = 1; i < videoInfo.length; i++) {
-            var id = "main-player-" + i;
-            objImmerse.addYTVideo(videoInfo[i].yt_id, id);  
-          }
-        };
-        objImmerse.renderPage();
-        // Youtube api setup
-        var tag = document.createElement('script');
+            objImmerse.arrHTMLTag = jQuery("html");
+            objImmerse.arrPanelWindow = jQuery(".panel-window");
+            
+            window.onYouTubeIframeAPIReady = function() {
+              // add youtube videos here
+              objImmerse.addYTVideo(videoInfo[0].yt_id, "introplayer", true, true);
+              for (i = 1; i < videoInfo.length; i++) {
+                var id = "main-player-" + i;
+                objImmerse.addYTVideo(videoInfo[i].yt_id, id);  
+              }
+            };
+            objImmerse.renderPage();
+            // Youtube api setup
+            var tag = document.createElement('script');
 
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);    
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);    
 
-                var blnIframeEmbed = window != window.parent;
-        if (blnIframeEmbed) {
-            jQuery("#header").css({"display" : "none"});
-            jQuery("body").addClass("iFrame");
-        } 
+            var blnIframeEmbed = window != window.parent;
+            if (blnIframeEmbed) {
+                jQuery("#header").css({"display" : "none"});
+                jQuery("body").addClass("iFrame");
+            } 
 
-        objImmerse.arrPageContainer = jQuery(".page-container");
-        objImmerse.arrVideos = jQuery(".video-container");
-        objImmerse.arrAudios = jQuery("audio");
-        objImmerse.arrPanels = jQuery(".panel");
-        objImmerse.arrPlayButtons = jQuery(".play-pause-button");
-        objImmerse.arrAudioPlayButtons = jQuery(".audio-play-pause-button");
-        objImmerse.arrAudioInner = jQuery(".audio-inner");
-        objImmerse.arrAudioToggle = jQuery(".audio-toggle");
-        objImmerse.arrVolumeDots = jQuery(".volume-dot");
-        objImmerse.arrAudioDots = jQuery(".audio-dot");
-        objImmerse.arrDotContainers = jQuery(".dot-container");
-        objImmerse.arrAudioDotContainers = jQuery(".audio-dot-container");
-        objImmerse.arrAudioTimeText = jQuery(".audio-time-text");
-        objImmerse.arrNextButton = jQuery(".navigation-controls-forward-arrow");
-        objImmerse.arrPrevButton = jQuery(".navigation-controls-back-arrow");
-        objImmerse.arrCaptionBox = jQuery(".caption-box");
-        objImmerse.arrPanelToggle = jQuery(".panel-toggle");
-        objImmerse.arrBeginButton = jQuery(".begin-button");
-        objImmerse.arrBtsCloseButtons = jQuery(".bts-back-button");
-        objImmerse.arrSocialButtons = jQuery(".social-button");
-        objImmerse.arrSocialPopups = jQuery(".social-popup");
-        objImmerse.arrThumbnailCloseButtons = jQuery(".thumbnail-close-button ");
-        objImmerse.totalPanels = objImmerse.arrPanels.length;
+            objImmerse.arrPageContainer = jQuery(".page-container");
+            objImmerse.arrVideos = jQuery(".video-container");
+            objImmerse.arrAudios = jQuery("audio");
+            objImmerse.arrPanels = jQuery(".panel");
+            objImmerse.arrPlayButtons = jQuery(".play-pause-button");
+            objImmerse.arrAudioPlayButtons = jQuery(".audio-play-pause-button");
+            objImmerse.arrAudioInner = jQuery(".audio-inner");
+            objImmerse.arrAudioToggle = jQuery(".audio-toggle");
+            objImmerse.arrVolumeDots = jQuery(".volume-dot");
+            objImmerse.arrAudioDots = jQuery(".audio-dot");
+            objImmerse.arrDotContainers = jQuery(".dot-container");
+            objImmerse.arrAudioDotContainers = jQuery(".audio-dot-container");
+            objImmerse.arrAudioTimeText = jQuery(".audio-time-text");
+            objImmerse.arrNextButton = jQuery(".navigation-controls-forward-arrow");
+            objImmerse.arrPrevButton = jQuery(".navigation-controls-back-arrow");
+            objImmerse.arrCaptionBox = jQuery(".caption-box");
+            objImmerse.arrPanelToggle = jQuery(".panel-toggle");
+            objImmerse.arrBeginButton = jQuery(".begin-button");
+            objImmerse.arrBtsCloseButtons = jQuery(".bts-back-button");
+            objImmerse.arrSocialButtons = jQuery(".social-button");
+            objImmerse.arrSocialPopups = jQuery(".social-popup");
+            objImmerse.arrThumbnailCloseButtons = jQuery(".thumbnail-close-button ");
+            objImmerse.totalPanels = videoInfo.length;
 
 
-        
-        // objImmerse.positionPanels();
-        objImmerse.reformatPage();
-        objImmerse.addEventListeners();
+            
+            // objImmerse.positionPanels();
+            objImmerse.reformatPage();
+            objImmerse.addEventListeners();
+        });
         
      };
      
     objImmerse.currentPanel = 0;
-    objImmerse.totalPanels = videoInfo.length;
     objImmerse.numMinVolume = 0;
     objImmerse.intPlayId = 0;
     objImmerse.blnAudioDrag = false;
