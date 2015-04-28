@@ -32,17 +32,13 @@
           <!-- End Controls --> 
           <p class="caption-body"><%= vid.body %></p>
           <div class="panel-toggle"></div>
+          
+      </div>
           <div class="social">
-              <div class="social-button"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/options.svg" alt="share"></div>
-              <div class="social-upper-wrap">
-                <div class="social-inner-wrap">
-                  <a href="javascript: window.open('https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.gannett-cdn.com%2Fexperiments%2Fusatoday%2F2014%2F12%2Fvs-backstage%2F&text=Angels!!!%20Check%20out%20this%20interactive%20backstage%20pass%20to%20the%202014%20Victoria\'s%20Secret%20Fashion%20Show&via=usatoday', 'twitterwindow', 'height=450, width=550, top=200, left=200, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');Analytics.click('Twitter share');void(0);"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/twitter.svg" alt="Share on Twitter" class="social-icon" border="0"></a> 
-                  <a href="javascript: var sTop=window.screen.height/2-(218);var sLeft=window.screen.width/2-(313);window.open('https://www.facebook.com/dialog/feed?display=popup&app_id=215046668549694&link=http%3A%2F%2Fwww.gannett-cdn.com%2Fexperiments%2Fusatoday%2F2014%2F12%2Fvs-backstage&picture=http://www.gannett-cdn.com/experiments/usatoday/2014/12/vs-backstage/img/fb-post.jpg&name=Angels!!!&description=Check%20out%20this%20interactive%20backstage%20pass%20to%20the%202014%20Victoria\'s%20Secret%20Fashion%20Show&redirect_uri=http://usatoday30.usatoday.com/_common/_dialogs/fb-share-done.html','sharer','toolbar=0,status=0,width=580,height=400,top='+sTop+',left='+sLeft);Analytics.click('Facebook share');void(0);"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/facebook.svg" alt="Share on Facebook" class="social-icon" border="0"></a> 
-                  <a href="mailto:?body=Check%20out%20this%20interactive%20backstage%20pass%20to%20the%202014%20Victoria%27s%20Secret%20Fashion%20Show %0d%0d http%3A%2F%2Fwww.gannett-cdn.com%2Fexperiments%2Fusatoday%2F2014%2F12%2Fvs-backstage%2F&subject=Angels!!!" onclick="var sharer = window.open('http://usatoday30.usatoday.com/_common/_dialogs/fb-share-done.html','sharer','toolbar=0,status=0,width=580,height=400,top=200,left=200');setTimeout(function() {sharer.close();}, 500);void(0);" target="sharer"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/email.svg" alt="Share on Email" class="social-icon" border="0"></a> 
-                </div>
-              </div>
+            <a class="tshare social-popup" href="https://twitter.com/intent/tweet?url=<%=share.twitterShare%>&text=<%=share.encodedShare%>"><img class="social-icon" src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/twitter.svg" alt="Share"  border="0"></a>
+            <a class="eshare " href="<%=share.email_link%>" ><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/email.svg" alt="Share"  class="social-icon" border="0"></a>
+            <a class="fbshare social-popup" href="https://www.facebook.com/dialog/feed?display=popup&app_id=<%=share.fb_id%>&link=<%=share.fbShare%>&picture=<%=share.stillimage%>&name=&description=<%=share.encodedShare%>&redirect_uri=<%=share.fb_redirect%>"><img src="http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/facebook.svg" class="social-icon" alt="Share"  border="0"></a>
           </div>
-        </div>
       </div>
       <div class="video-container">
         <div class="videocover"></div>

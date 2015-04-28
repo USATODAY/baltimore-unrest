@@ -38,6 +38,8 @@ define([
         }
     ];
 
+    var share_text = "Share me";
+
     var objImmerse = objImmerse || {};
     objImmerse.arrYTVideos = [];
 
@@ -87,6 +89,7 @@ define([
         objImmerse.arrBeginButton = jQuery(".begin-button");
         objImmerse.arrBtsCloseButtons = jQuery(".bts-back-button");
         objImmerse.arrSocialButtons = jQuery(".social-button");
+        objImmerse.arrSocialPopups = jQuery(".social-popup");
         objImmerse.arrThumbnailCloseButtons = jQuery(".thumbnail-close-button ");
         objImmerse.totalPanels = objImmerse.arrPanels.length;
 
@@ -111,7 +114,7 @@ define([
         var $pageContainer = objImmerse.arrPanelWindow.find('.page-container');
         for (i = 1; i < videoInfo.length; i++) {
             console.log(videoInfo[i]);
-            $pageContainer.append(templates['panel.html']({vid: videoInfo[i], num: i}));
+            $pageContainer.append(templates['panel.html']({vid: videoInfo[i], num: i, share: objImmerse.createShare(share_text)}));
         }
     };
 
@@ -192,14 +195,13 @@ define([
         // $(window).on("resize", function(e){
         // 	objImmerse.resizeVideos();
         // });
-      objImmerse.arrSocialButtons.on("click", function(e) {
-        $(".social-upper-wrap").eq(objImmerse.currentPanel - 1).toggleClass("show");
-      });
       objImmerse.arrBtsCloseButtons.click(function(e) {
         var index = objImmerse.arrBtsCloseButtons.index($(this)) + 1;
         console.log(index);
         objImmerse.toggleBts(index);
       });
+
+        objImmerse.arrSocialPopups.click(objImmerse.socialClick);
 
         window.addEventListener("orientationchange", function() {
                 objImmerse.reformatPage();
@@ -561,6 +563,43 @@ define([
     //     objImmerse.arrVideos.width(width);
         
     // };
+    objImmerse.createShare = function(shareString) {
+        var shareURL = window.location.href;
+        var fbShareURL = encodeURI(shareURL.replace('#', '%23'));
+        var twitterShareURL = encodeURIComponent(shareURL);
+        var emailLink = "mailto:?body=" + encodeURIComponent(shareString) +  "%0d%0d" + twitterShareURL + "&subject=";
+        
+        return {
+            'fb_id': config.facebook.app_id,
+            fbShare:  encodeURI(shareURL.replace('#', '%23')),
+            stillimage: "http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/img/fb-post.jpg",
+            encodedShare: encodeURIComponent(shareString),
+            fb_redirect: 'http://' + window.location.hostname + '/pages/interactives/fb-share/',
+            email_link: "mailto:?body=" + encodeURIComponent(shareString) +  "%0d%0d" + encodeURIComponent(shareURL) + "&subject=",
+            twitterShare: encodeURIComponent(shareURL)
+        };
+
+    };
+
+    objImmerse.socialClick = function(e) {
+        e.preventDefault();
+        Analytics.trackEvent('Share button clicked: ' + jQuery(e.currentTarget).attr('id'));
+
+        objImmerse.windowPopup(e.currentTarget.href, 500, 300);
+    };
+
+    objImmerse.windowPopup = function(url, width, height) {
+        // Calculate the position of the popup so
+        // it’s centered on the screen.
+        var left = (screen.width / 2) - (width / 2),
+        top = (screen.height / 2) - (height / 2);
+
+        window.open(
+            url,
+            "",
+            "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=" + width + ",height=" + height + ",top=" + top + ",left=" + left
+        );
+    };
 
     return objImmerse;
 
