@@ -21,7 +21,7 @@ define([
         if ((hostname == "localhost" || hostname == "10.0.2.2")) {
             dataURL = 'data/data.json';
         } else {
-            dataURL = "http://" + hostname + "/services/webproxy/?url=http://www.gannett-cdn.com/experiments/usatoday/2015/04/record-day/data/data.json";
+            dataURL = "http://" + hostname + "/services/webproxy/?url=http://www.gannett-cdn.com/experiments/usatoday/2015/04/baltimore-unrest/data/data.json";
         }
 
         jQuery.getJSON(dataURL, function(data) {
