@@ -26,8 +26,8 @@ define([
 
         jQuery.getJSON(dataURL, function(data) {
             videoInfo = data.videos;
-            copy = data.copy;
-        
+            copy = data.copy[0];
+            console.log(copy);
             objImmerse.arrHTMLTag = jQuery("html");
             objImmerse.arrPanelWindow = jQuery(".panel-window");
             
@@ -94,11 +94,11 @@ define([
 
     objImmerse.renderPage = function() {
         objImmerse.arrPanelWindow.html(templates['app.html']());
-        objImmerse.arrPanelWindow.find('.intro').html(templates['intro.html']());
+        objImmerse.arrPanelWindow.find('.intro').html(templates['intro.html'](copy));
         var $pageContainer = objImmerse.arrPanelWindow.find('.page-container');
         for (i = 1; i < videoInfo.length; i++) {
             console.log(videoInfo[i]);
-            $pageContainer.append(templates['panel.html']({vid: videoInfo[i], num: i, share: objImmerse.createShare(share_text)}));
+            $pageContainer.append(templates['panel.html']({vid: videoInfo[i], num: i, share: objImmerse.createShare(copy.project_share)}));
         }
     };
 

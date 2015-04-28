@@ -16,7 +16,11 @@ this["templates"]["intro.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += ' <div id="introvid" class="video-container">\n        <div class="videocover"></div>\n        <div class="videoembed" id="introplayer">\n        </div>\n</div>\n<div class="intro-content">\n             <div class="intro-title">\n              <h2 class="intro-copy">Baltimore Unrest</h2>\n          <div class="begin-button">Begin</div>\n          <!-- <div class="intro-credits">\n            <h3 class="credit-line">By: <a href="https://twitter.com/khjelmgaard" target="_blank">@khjelmgaard</a>, <a href="https://twitter.com/mitchthorson" target="_blank">@mitchthorson</a>, <a href="https://twitter.com/toryhargro" target="_blank">@toryhargro</a>, <a href="https://twitter.com/renalston" target="_blank">@renalston</a> and Robin A. Smith</h3>\n          </div> -->\n        </div>\n      </div>\n      \n    \n';
+__p += ' <div id="introvid" class="video-container">\n        <div class="videocover"></div>\n        <div class="videoembed" id="introplayer">\n        </div>\n</div>\n<div class="intro-content">\n    <div class="intro-title">\n        <h1 class="intro-headline">' +
+((__t = (project_head )) == null ? '' : __t) +
+'</h1>\n        <h2 class="intro-copy">' +
+((__t = (chatter )) == null ? '' : __t) +
+'</h2>\n          <div class="begin-button">Begin</div>\n          <!-- <div class="intro-credits">\n            <h3 class="credit-line">By: <a href="https://twitter.com/khjelmgaard" target="_blank">@khjelmgaard</a>, <a href="https://twitter.com/mitchthorson" target="_blank">@mitchthorson</a>, <a href="https://twitter.com/toryhargro" target="_blank">@toryhargro</a>, <a href="https://twitter.com/renalston" target="_blank">@renalston</a> and Robin A. Smith</h3>\n          </div> -->\n        </div>\n      </div>\n      \n    \n';
 
 }
 return __p
@@ -31,7 +35,9 @@ __p += '    <div class="panel upcoming">\n      <div class="caption-box">\n     
 ((__t = ( vid.head )) == null ? '' : __t) +
 '</h2>\n  ';
  if(vid.audio) { ;
-__p += '\n            <div class="controls" style="">\n            \n            <div class="audio-container" >\n              <div class="audio-play-pause-button"> <span class="commentary-label">Commentary</span>\n                <div class="audio-toggle">\n                  <div class="toggle-inner"> <span class="toggle-label">On</span>\n                    <div class="toggle-button"></div>\n                    <span class="toggle-label">Off</span> </div>\n                </div>\n              </div>\n              <div class="audio-player">\n                <div class="audio-inner not-playing">\n                  <div class="audio-credit-inner">Audio Credit</div>\n                  <div class="audio-box">\n                    <div class="audio-bar"> </div>\n                    <div class="audio-dot-container">\n                      <div class="audio-dot"></div>\n                    </div>\n                  </div>\n                  <div class="audio-time-text">0:00/0:00</div>\n                </div>\n              </div>\n            </div>\n        </div>\n        ';
+__p += '\n            <div class="controls" style="">\n            \n            <div class="audio-container" >\n              <div class="audio-play-pause-button"> <span class="commentary-label">Commentary</span>\n                <div class="audio-toggle">\n                  <div class="toggle-inner"> <span class="toggle-label">On</span>\n                    <div class="toggle-button"></div>\n                    <span class="toggle-label">Off</span> </div>\n                </div>\n              </div>\n              <div class="audio-player">\n                <div class="audio-inner not-playing">\n                    <div class="audio-credit-inner">' +
+((__t = ( vid.audio_credit )) == null ? '' : __t) +
+'</div>\n                  <div class="audio-box">\n                    <div class="audio-bar"> </div>\n                    <div class="audio-dot-container">\n                      <div class="audio-dot"></div>\n                    </div>\n                  </div>\n                  <div class="audio-time-text">0:00/0:00</div>\n                </div>\n              </div>\n            </div>\n        </div>\n        ';
  } ;
 __p += '\n          <!-- End Controls --> \n          <p class="caption-body">' +
 ((__t = ( vid.body )) == null ? '' : __t) +

@@ -159,7 +159,7 @@ body {
   padding-right: 2.5%;
   padding-bottom: 25px;
   padding-top: 25px;
-  position: fixed;
+  position: absolute;
   text-align: left;
   // transform: translate(58%, 0);
   width: 500px;
@@ -660,6 +660,14 @@ margin-left:-600px;
   text-align: center;
   text-transform: uppercase;
   width: 30%;
+}
+
+.intro-headline {
+    font-family: "Futura Today Bold", Arial, sans-serif;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    text-transform: uppercase;
 }
 
 .intro {

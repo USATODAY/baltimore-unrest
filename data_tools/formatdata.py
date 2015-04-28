@@ -31,6 +31,10 @@ def read_sheet(sh):
         # loop through each column in row
         for colnum in range(sh.ncols):
             value = sh.cell(rownum, colnum).value
+            if value is 0:
+                value = False
+            if value is 1:
+                value = True
             row_dict[column_names[colnum]] = value
 
         sheet_list.append(row_dict)
