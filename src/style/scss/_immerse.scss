@@ -662,9 +662,11 @@ margin-left:-600px;
   width: 30%;
 }
 
-.intro-headline {
-    font-family: "Futura Today Bold", Arial, sans-serif;
+.iapp-wrap h1.intro-headline {
+    color: white;
+    font: "Futura Today Bold", Arial, sans-serif;
     font-size: 3em;
+    padding: 0;
     text-align: center;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
     text-transform: uppercase;

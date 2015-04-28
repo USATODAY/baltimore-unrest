@@ -10,6 +10,7 @@ define([
     var videoInfo, copy;
 
     var share_text = "Share me";
+    var redirect_url = "http://www.usatoday.com/videos/news/nation/2015/04/28/riot-erupts-in-baltimore/26481401/";
 
     var objImmerse = objImmerse || {};
     objImmerse.arrYTVideos = [];
@@ -17,6 +18,10 @@ define([
     objImmerse.init = function() {
         var hostname = window.location.hostname;
         var dataURL;
+
+        if (config.isMobile) {
+            window.location.replace(redirect_url);
+        }
 
         if ((hostname == "localhost" || hostname == "10.0.2.2")) {
             dataURL = 'data/data.json';
